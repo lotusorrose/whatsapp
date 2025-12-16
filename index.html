@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        input[type="tel"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #25D366; /* WhatsApp green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🔗 Send WhatsApp Message</h2>
+
+    <p>Enter the phone number (including country code, e.g., 12025550100):</p>
+
+    <input type="tel" id="phoneNumber" placeholder="e.g., 12025550100">
+
+    <button onclick="sendWhatsApp()">
+        Open Chat on WhatsApp
+    </button>
+
+    <script>
+        function sendWhatsApp() {
+            // Get the phone number from the text box
+            const number = document.getElementById('phoneNumber').value.trim();
+
+            // WhatsApp "Click to Chat" requires the number to be country code + number, 
+            // without leading '+' or any spaces/dashes.
+            // This basic function assumes the user enters a correctly formatted number 
+            // (e.g., 12025550100).
+            if (number) {
+                // Construct the WhatsApp URL
+                const whatsappUrl = `https://wa.me/${number}`;
+                
+                // Open the URL in a new tab/window (this will prompt the user to open the WhatsApp app on mobile)
+                window.open(whatsappUrl, '_blank');
+            } else {
+                alert('Please enter a phone number.');
+            }
+        }
+    </script>
+
+</body>
+</html>
